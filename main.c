@@ -23,6 +23,11 @@ int main(void)
 
     inorder(root);
     printf("\n");
+
+    root = delete_node(root, 4);
+    printf("\n");
+    inorder(root);
+
     value = 11;
     if (search(root, value) == 1)
         printf("Value found\n");

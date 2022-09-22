@@ -43,6 +43,15 @@ bst_t *insert(bst_t *root, int data)
     }
     return root;
 }
+/* Find a minimum value of a tree */
+bst_t *findmin(bst_t *root)
+{
+    while(root->left != NULL)
+    {
+        root = root->left;
+    }
+    return root;
+}
 
 /* Search an element from BST */
 int search(bst_t *root, int data)
@@ -55,4 +64,43 @@ int search(bst_t *root, int data)
         return search(root->left,data);
     else
         return search(root->right,data);
+}
+/* Delete a node from a tree */
+bst_t *delete_node(bst_t *root, int data)
+{
+    if (root == NULL)
+        return root;
+    else if(data < root->data)
+        root->left = delete_node(root->left, data);
+    else if(data > root->data)
+        root->right = delete_node(root->right, data);
+    else
+    {
+        /* Delete a node with no child */
+        if(root->left == NULL && root->right == NULL)
+        {
+            free(root);
+            root = NULL;
+        }
+        /* Delete a node with one child */
+        else if(root->left == NULL)
+        {
+            bst_t *temp = root;
+            root = root->right;
+            free(temp);
+        }
+        else if(root->right == NULL)
+        {
+            bst_t *temp = root;
+            root = root->left;
+            free(temp);
+        }
+        /* Delete a node with two children */
+        else {
+            bst_t *temp = findmin(root->right);
+            root->data = temp->data;
+            root->right = delete_node(root->right,temp->data);
+        }
+    }
+    return root;
 }
