@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "bst.h"
 
@@ -9,6 +10,7 @@
 int main(void)
 {
     bst_t *root;
+    int value;
 
     root = NULL;
 
@@ -20,5 +22,11 @@ int main(void)
     root = insert(root,9);
 
     inorder(root);
+    printf("\n");
+    value = 11;
+    if (search(root, value) == 1)
+        printf("Value found\n");
+    else
+        printf("Value not found");
     return (0);
 }

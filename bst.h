@@ -26,5 +26,6 @@ void binary_tree_print(const binary_tree_t *);
 bst_t *create_new_node(int data);
 void inorder(bst_t *root);
 bst_t *insert(bst_t *root, int data);
+int search(bst_t *root, int data);
 
 #endif /* _BINARY_TREES_H_ */

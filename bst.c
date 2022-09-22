@@ -45,3 +45,14 @@ bst_t *insert(bst_t *root, int data)
 }
 
 /* Search an element from BST */
+int search(bst_t *root, int data)
+{
+    if (root == NULL)
+        return 0;
+    else if(root->data == data)
+        return 1;
+    else if(data <= root->data)
+        return search(root->left,data);
+    else
+        return search(root->right,data);
+}
