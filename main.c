@@ -10,7 +10,14 @@ int main(void)
 {
     bst_t *root;
 
-    root = create_new_node(98);
+    root = NULL;
+
+    root = insert(root,5);
+    root = insert(root,3);
+    root = insert(root,7);
+    root = insert(root,4);
+    root = insert(root,1);
+    root = insert(root,9);
 
     inorder(root);
     return (0);

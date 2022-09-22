@@ -16,6 +16,7 @@ bst_t *create_new_node(int data)
 	return (new_node);
 }
 
+/* Inorder traversal function */
 void inorder(bst_t *root)
 {
     if (root == NULL)
@@ -24,3 +25,23 @@ void inorder(bst_t *root)
     printf("%d ", root->data);
     inorder(root->right);
 }
+
+/* Inserting data into BST */
+bst_t *insert(bst_t *root, int data)
+{
+    if (root == NULL)
+        root = create_new_node(data);
+
+    /* if data to be inserted is less than the root, insert in the left subtree */
+    else if(data <= root->data)
+    {
+        root->left = insert(root->left, data);
+    }
+    else
+    {
+        root->right = insert(root->right, data);
+    }
+    return root;
+}
+
+/* Search an element from BST */
